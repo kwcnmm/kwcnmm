@@ -47,11 +47,11 @@ public class GameController {
         gameFrame.repaint();
     }
 
-    public void repaintGamePanel() {
-        gamePanel.repaint();
-    }
-
     public GameDTO getDto() {
         return dto;
+    }
+
+    public void repaintGamePanel() {
+        gamePanel.repaint();
     }
 }

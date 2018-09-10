@@ -12,4 +12,9 @@ public class EnemyBullet extends BaseBullet {
     public void move(int direction) {
 
     }
+
+    @Override
+    public void startThread() {
+
+    }
 }

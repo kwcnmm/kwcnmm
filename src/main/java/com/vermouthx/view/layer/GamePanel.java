@@ -2,6 +2,7 @@ package com.vermouthx.view.layer;
 
 import com.vermouthx.config.GameConfig;
 import com.vermouthx.controller.GameController;
+import com.vermouthx.entity.BaseBullet;
 import com.vermouthx.util.ResourceUtil;
 
 import javax.imageio.ImageIO;
@@ -9,6 +10,7 @@ import java.applet.Applet;
 import java.applet.AudioClip;
 import java.awt.*;
 import java.io.IOException;
+import java.util.List;
 
 public class GamePanel extends BasePanel {
 
@@ -93,8 +95,13 @@ public class GamePanel extends BasePanel {
 
     @Override
     protected void paintComponent(Graphics g) {
+        // draw map
         drawMap(g);
+        // draw player plane
         gameController.getDto().getPlayerPlane().draw(g);
+        // draw player bullets
+        for (BaseBullet baseBullet : gameController.getDto().getPlayerBullets())
+            baseBullet.draw(g);
         requestFocus();
     }
 }

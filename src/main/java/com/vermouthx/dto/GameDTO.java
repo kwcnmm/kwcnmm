@@ -4,6 +4,7 @@ import com.vermouthx.entity.BaseBullet;
 import com.vermouthx.entity.PlayerPlane;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class GameDTO {
@@ -12,14 +13,26 @@ public class GameDTO {
 
     private PlayerPlane playerPlane;
 
-    private List<BaseBullet> playerBullets;
+    private final List<BaseBullet> playerBullets;
 
-    private List<BaseBullet> enemyBullets;
+    private final List<BaseBullet> enemyBullets;
 
     public GameDTO() {
         playerPlane = new PlayerPlane();
-        playerBullets = new ArrayList<>();
-        enemyBullets = new ArrayList<>();
+        playerBullets = new LinkedList<>();
+        enemyBullets = new LinkedList<>();
+    }
+
+    public void addPlayerBullet(BaseBullet bullet) {
+        synchronized (playerBullets) {
+            playerBullets.add(bullet);
+        }
+    }
+
+    public void removePlayerBullet(BaseBullet bullet) {
+        synchronized (playerBullets) {
+            playerBullets.remove(bullet);
+        }
     }
 
     public String getDifficulty() {

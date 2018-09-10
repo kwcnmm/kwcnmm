@@ -17,4 +17,6 @@ public class EnemyPlane extends BasePlane {
     public void shot() {
 
     }
+
+
 }

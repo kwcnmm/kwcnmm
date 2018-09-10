@@ -5,6 +5,10 @@ import java.util.Map;
 
 public class GameConfig {
 
+    private GameConfig() {
+
+    }
+
     /**
      * game name
      */
@@ -52,9 +56,19 @@ public class GameConfig {
     private static int PLAYER_PLANE_RIGHT_EDGE_END_X = 318;
 
     /**
+     * image for player bullet
+     */
+    private static String PLANE_BULLET_PATH = "bullet/p-f01.png";
+
+    /**
      * player plane speed
      */
     private static int PLAYER_PLANE_SPEED = 20;
+
+    /**
+     * player bullet speed
+     */
+    private static int PLAYER_BULLET_SPEED = 5;
 
     static {
         // fill difficulty map
@@ -181,5 +195,13 @@ public class GameConfig {
 
     public static int getPlayerPlaneSpeed() {
         return PLAYER_PLANE_SPEED;
+    }
+
+    public static String getPlaneBulletPath() {
+        return PLANE_BULLET_PATH;
+    }
+
+    public static int getPlayerBulletSpeed() {
+        return PLAYER_BULLET_SPEED;
     }
 }

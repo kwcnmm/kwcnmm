@@ -7,6 +7,7 @@ import com.vermouthx.util.ResourceUtil;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.IOException;
+import java.util.List;
 
 public class PlayerPlane extends BasePlane {
 
@@ -81,6 +82,8 @@ public class PlayerPlane extends BasePlane {
         switch (direction) {
             case Direction.UP:
                 this.direction = Direction.UP;
+                if (getX() != 0 && getX() != GameConfig.getWindowWidth() - getWidth())
+                    setWidth(GameConfig.getPlayerPlaneStillEndX() - GameConfig.getPlayerPlaneStillStartX());
                 if (getY() - speed < 0)
                     setY(0);
                 else
@@ -88,6 +91,8 @@ public class PlayerPlane extends BasePlane {
                 break;
             case Direction.DOWN:
                 this.direction = Direction.DOWN;
+                if (getX() != 0 && getX() != GameConfig.getWindowWidth() - getWidth())
+                    setWidth(GameConfig.getPlayerPlaneStillEndX() - GameConfig.getPlayerPlaneStillStartX());
                 if (getY() + speed > GameConfig.getWindowHeight() - getHeight())
                     setY(GameConfig.getWindowHeight() - getHeight());
                 else
@@ -123,6 +128,8 @@ public class PlayerPlane extends BasePlane {
 
     @Override
     public void shot() {
-        GameDTO dto = GameDTO.getDto();
+        BaseBullet bullet = new PlayerBullet(getX() + (getWidth() >> 1), getY());
+        GameDTO.getDto().addPlayerBullet(bullet);
+        bullet.startThread();
     }
 }

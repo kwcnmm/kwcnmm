@@ -19,7 +19,7 @@ public class PlayerController extends KeyAdapter {
         this.playerPlane = playerPlane;
         this.gameController = gameController;
         functionKeys = new HashSet<>();
-        char[] funCharKeys = {'e', 'd', 's', 'f'};
+        char[] funCharKeys = {'e', 'd', 's', 'f', 'j'};
         for (char c : funCharKeys)
             functionKeys.add(c);
         pressedKeys = new HashSet<>();
@@ -39,14 +39,14 @@ public class PlayerController extends KeyAdapter {
         if (functionKeys.contains(key)) {
             pressedKeys.remove(key);
         }
-        if (pressedKeys.size() == 0) {
+        if (pressedKeys.size() == 0 || (pressedKeys.size() == 1 && pressedKeys.contains('j'))) {
             playerPlane.move(Direction.STILL);
             gameController.repaintGamePanel();
         }
     }
 
     public void triggerPressedKey() {
-        if (pressedKeys.size() <= 2) {
+        if (pressedKeys.size() <= 3) {
             if (pressedKeys.contains('e')) playerPlane.move(Direction.UP);
             if (pressedKeys.contains('d')) playerPlane.move(Direction.DOWN);
             if (pressedKeys.contains('s')) playerPlane.move(Direction.LEFT);
