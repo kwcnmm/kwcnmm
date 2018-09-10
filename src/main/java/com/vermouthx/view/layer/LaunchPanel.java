@@ -91,7 +91,7 @@ public class LaunchPanel extends BasePanel {
      */
     private void initBtnContinue() {
         btnContinue = new JLabel(btnContinueIcon);
-        btnContinue.setBounds((GameConfig.getWindowWidth() - btnContinueIcon.getIconWidth()) / 2, GameConfig.getWindowHeight() / 3 * 2, btnContinueIcon.getIconWidth(), btnContinueIcon.getIconHeight());
+        btnContinue.setBounds((GameConfig.getWindowWidth() - btnContinueIcon.getIconWidth()) >> 1, GameConfig.getWindowHeight() / 3 * 2, btnContinueIcon.getIconWidth(), btnContinueIcon.getIconHeight());
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -111,7 +111,7 @@ public class LaunchPanel extends BasePanel {
         for (int i = 0; i < GameConfig.getDifficultyDegree(); i++) {
             btnDifficultyIcons[i] = new ImageIcon(ResourceUtil.getResource(btnDifficultyImagesBasePath + i + ".png"));
             btnDifficulty[i] = new JLabel(btnDifficultyIcons[i]);
-            btnDifficulty[i].setBounds((GameConfig.getWindowWidth() - btnDifficultyIcons[i].getIconWidth()) / 2, GameConfig.getWindowHeight() / 5 * 3 + i * btnDifficultyIcons[i].getIconHeight() + i * 20, btnDifficultyIcons[i].getIconWidth(), btnDifficultyIcons[i].getIconHeight());
+            btnDifficulty[i].setBounds((GameConfig.getWindowWidth() - btnDifficultyIcons[i].getIconWidth()) >> 1, GameConfig.getWindowHeight() / 5 * 3 + i * btnDifficultyIcons[i].getIconHeight() + i * 20, btnDifficultyIcons[i].getIconWidth(), btnDifficultyIcons[i].getIconHeight());
             final int difficulty = i;
             btnDifficulty[i].addMouseListener(new MouseAdapter() {
                 @Override

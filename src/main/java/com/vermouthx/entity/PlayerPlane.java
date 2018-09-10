@@ -1,6 +1,7 @@
 package com.vermouthx.entity;
 
 import com.vermouthx.config.GameConfig;
+import com.vermouthx.dto.GameDTO;
 import com.vermouthx.util.ResourceUtil;
 
 import javax.imageio.ImageIO;
@@ -21,7 +22,7 @@ public class PlayerPlane extends BasePlane {
             setImage(image);
             setWidth(GameConfig.getPlayerPlaneStillEndX() - GameConfig.getPlayerPlaneStillStartX());
             setHeight(image.getHeight(null));
-            setX((GameConfig.getWindowWidth() - getWidth()) / 2);
+            setX((GameConfig.getWindowWidth() - getWidth()) >> 1);
             setY(GameConfig.getWindowHeight() - getHeight());
         } catch (IOException e) {
             e.printStackTrace();
@@ -118,5 +119,10 @@ public class PlayerPlane extends BasePlane {
                 this.direction = Direction.STILL;
                 break;
         }
+    }
+
+    @Override
+    public void shot() {
+        GameDTO dto = GameDTO.getDto();
     }
 }

@@ -1,6 +1,10 @@
 package com.vermouthx.dto;
 
+import com.vermouthx.entity.BaseBullet;
 import com.vermouthx.entity.PlayerPlane;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GameDTO {
 
@@ -8,8 +12,14 @@ public class GameDTO {
 
     private PlayerPlane playerPlane;
 
+    private List<BaseBullet> playerBullets;
+
+    private List<BaseBullet> enemyBullets;
+
     public GameDTO() {
         playerPlane = new PlayerPlane();
+        playerBullets = new ArrayList<>();
+        enemyBullets = new ArrayList<>();
     }
 
     public String getDifficulty() {
@@ -24,8 +34,12 @@ public class GameDTO {
         return playerPlane;
     }
 
-    public void setPlayerPlane(PlayerPlane playerPlane) {
-        this.playerPlane = playerPlane;
+    public List<BaseBullet> getPlayerBullets() {
+        return playerBullets;
+    }
+
+    public List<BaseBullet> getEnemyBullets() {
+        return enemyBullets;
     }
 
     /**

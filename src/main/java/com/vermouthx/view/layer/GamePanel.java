@@ -78,7 +78,6 @@ public class GamePanel extends BasePanel {
                     repaint();
                     if (mapY == mapImg.getHeight(null) - GameConfig.getWindowHeight()) {
                         isTopMap = true;
-                        mapThread.join();
                     }
                 }
             } catch (InterruptedException e) {

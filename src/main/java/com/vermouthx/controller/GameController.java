@@ -21,6 +21,7 @@ public class GameController {
     public GameController() {
         init();
         dto = GameDTO.getDto();
+        playerController = new PlayerController(dto.getPlayerPlane(), this);
     }
 
     private void init() {
@@ -31,10 +32,23 @@ public class GameController {
 
     public void startGame() {
         gamePanel = new GamePanel(this);
-        playerController = new PlayerController(dto.getPlayerPlane());
         gamePanel.addKeyListener(playerController);
+        new Thread(() -> {
+            while (true) {
+                try {
+                    Thread.sleep(100);
+                    playerController.triggerPressedKey();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
         FrameUtil.setContentPanel(gameFrame, gamePanel);
         gameFrame.repaint();
+    }
+
+    public void repaintGamePanel() {
+        gamePanel.repaint();
     }
 
     public GameDTO getDto() {

@@ -12,4 +12,9 @@ public class EnemyPlane extends BasePlane {
     public void move(int direction) {
 
     }
+
+    @Override
+    public void shot() {
+
+    }
 }

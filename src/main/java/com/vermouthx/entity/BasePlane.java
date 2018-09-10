@@ -9,4 +9,6 @@ public abstract class BasePlane extends GameObject {
         super(x, y, width, height);
     }
 
+    public abstract void shot();
+
 }
