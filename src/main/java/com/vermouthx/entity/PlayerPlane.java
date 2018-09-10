@@ -80,21 +80,41 @@ public class PlayerPlane extends BasePlane {
         switch (direction) {
             case Direction.UP:
                 this.direction = Direction.UP;
-                setY(getY() - speed);
+                if (getY() - speed < 0)
+                    setY(0);
+                else
+                    setY(getY() - speed);
                 break;
             case Direction.DOWN:
                 this.direction = Direction.DOWN;
-                setY(getY() + speed);
+                if (getY() + speed > GameConfig.getWindowHeight() - getHeight())
+                    setY(GameConfig.getWindowHeight() - getHeight());
+                else
+                    setY(getY() + speed);
                 break;
             case Direction.LEFT:
                 this.direction = Direction.LEFT;
-                setX(getX() - speed);
+                if (getX() - speed > 0) {
+                    setWidth(GameConfig.getPlayerPlaneLeftEndX() - GameConfig.getPlayerPlaneLeftStartX());
+                    setX(getX() - speed);
+                } else {
+                    setWidth(GameConfig.getPlayerPlaneLeftEdgeEndX() - GameConfig.getPlayerPlaneLeftEdgeStartX());
+                    setX(0);
+                }
                 break;
             case Direction.RIGHT:
                 this.direction = Direction.RIGHT;
-                setX(getX() + speed);
+                if (getX() + speed < GameConfig.getWindowWidth() - getWidth()) {
+                    setWidth(GameConfig.getPlayerPlaneRightEndX() - GameConfig.getPlayerPlaneRightStartX());
+                    setX(getX() + speed);
+                } else {
+                    setWidth(GameConfig.getPlayerPlaneRightEdgeEndX() - GameConfig.getPlayerPlaneRightEdgeStartX());
+                    setX(GameConfig.getWindowWidth() - getWidth());
+                }
                 break;
             case Direction.STILL:
+                if (getX() != 0 && getX() != GameConfig.getWindowWidth() - getWidth())
+                    setWidth(GameConfig.getPlayerPlaneStillEndX() - GameConfig.getPlayerPlaneStillStartX());
                 this.direction = Direction.STILL;
                 break;
         }

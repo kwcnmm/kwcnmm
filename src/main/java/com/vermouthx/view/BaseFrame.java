@@ -13,6 +13,6 @@ class BaseFrame extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setIconImage(new ImageIcon(ResourceUtil.getResource("logo/smsBuyMust1.jpg")).getImage());
         setLocationRelativeTo(null);
-//        setResizable(false);
+        setResizable(false);
     }
 }
