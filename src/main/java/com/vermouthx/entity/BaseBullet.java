@@ -1,4 +1,5 @@
 package com.vermouthx.entity;
 
-public class BaseBullet {
+public abstract class BaseBullet extends GameObject {
+
 }

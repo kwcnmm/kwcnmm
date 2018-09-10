@@ -95,6 +95,7 @@ public class GamePanel extends BasePanel {
     @Override
     protected void paintComponent(Graphics g) {
         drawMap(g);
+        gameController.getDto().getPlayerPlane().draw(g);
         requestFocus();
     }
 }

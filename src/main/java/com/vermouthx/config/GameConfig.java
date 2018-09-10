@@ -24,17 +24,37 @@ public class GameConfig {
     /**
      * map for int and difficulty (String)
      */
-    private static final Map<Integer, String> DIFFICULT_MAP = new HashMap<>();
+    private static Map<Integer, String> DIFFICULT_MAP = new HashMap<>();
 
     /**
      * interval pixel for map moving
      */
-    private static final int MAP_MOVE_INTERVAL = 1;
+    private static int MAP_MOVE_INTERVAL = 1;
 
     /**
      * speed for map moving (millisecond)
      */
-    private static final int MAP_MOVE_SPEED = 50;
+    private static int MAP_MOVE_SPEED = 50;
+
+    /**
+     * image for player plane
+     */
+    private static String PLAYER_IMG_PATH = "plane/p01-1.png";
+    private static int PLAYER_PLANE_LEFT_EDGE_START_X = 0;
+    private static int PLAYER_PLANE_LEFT_EDGE_END_X = 53;
+    private static int PLAYER_PLANE_LEFT_START_X = 53;
+    private static int PLAYER_PLANE_LEFT_END_X = 118;
+    private static int PLAYER_PLANE_STILL_START_X = 118;
+    private static int PLAYER_PLANE_STILL_END_X = 196;
+    private static int PLAYER_PLANE_RIGHT_START_X = 196;
+    private static int PLAYER_PLANE_RIGHT_END_X = 263;
+    private static int PLAYER_PLANE_RIGHT_EDGE_START_X = 263;
+    private static int PLAYER_PLANE_RIGHT_EDGE_END_X = 318;
+
+    /**
+     * player plane speed
+     */
+    private static int PLAYER_PLANE_SPEED = 20;
 
     static {
         // fill difficulty map
@@ -69,5 +89,97 @@ public class GameConfig {
 
     public static int getMapMoveSpeed() {
         return MAP_MOVE_SPEED;
+    }
+
+    public static String getPlayerImgPath() {
+        return PLAYER_IMG_PATH;
+    }
+
+    public static void setPlayerImgPath(String playerImgPath) {
+        PLAYER_IMG_PATH = playerImgPath;
+    }
+
+    public static int getPlayerPlaneLeftEdgeStartX() {
+        return PLAYER_PLANE_LEFT_EDGE_START_X;
+    }
+
+    public static void setPlayerPlaneLeftEdgeStartX(int playerPlaneLeftEdgeStartX) {
+        PLAYER_PLANE_LEFT_EDGE_START_X = playerPlaneLeftEdgeStartX;
+    }
+
+    public static int getPlayerPlaneLeftEdgeEndX() {
+        return PLAYER_PLANE_LEFT_EDGE_END_X;
+    }
+
+    public static void setPlayerPlaneLeftEdgeEndX(int playerPlaneLeftEdgeEndX) {
+        PLAYER_PLANE_LEFT_EDGE_END_X = playerPlaneLeftEdgeEndX;
+    }
+
+    public static int getPlayerPlaneLeftStartX() {
+        return PLAYER_PLANE_LEFT_START_X;
+    }
+
+    public static void setPlayerPlaneLeftStartX(int playerPlaneLeftStartX) {
+        PLAYER_PLANE_LEFT_START_X = playerPlaneLeftStartX;
+    }
+
+    public static int getPlayerPlaneLeftEndX() {
+        return PLAYER_PLANE_LEFT_END_X;
+    }
+
+    public static void setPlayerPlaneLeftEndX(int playerPlaneLeftEndX) {
+        PLAYER_PLANE_LEFT_END_X = playerPlaneLeftEndX;
+    }
+
+    public static int getPlayerPlaneStillStartX() {
+        return PLAYER_PLANE_STILL_START_X;
+    }
+
+    public static void setPlayerPlaneStillStartX(int playerPlaneStillStartX) {
+        PLAYER_PLANE_STILL_START_X = playerPlaneStillStartX;
+    }
+
+    public static int getPlayerPlaneStillEndX() {
+        return PLAYER_PLANE_STILL_END_X;
+    }
+
+    public static void setPlayerPlaneStillEndX(int playerPlaneStillEndX) {
+        PLAYER_PLANE_STILL_END_X = playerPlaneStillEndX;
+    }
+
+    public static int getPlayerPlaneRightStartX() {
+        return PLAYER_PLANE_RIGHT_START_X;
+    }
+
+    public static void setPlayerPlaneRightStartX(int playerPlaneRightStartX) {
+        PLAYER_PLANE_RIGHT_START_X = playerPlaneRightStartX;
+    }
+
+    public static int getPlayerPlaneRightEndX() {
+        return PLAYER_PLANE_RIGHT_END_X;
+    }
+
+    public static void setPlayerPlaneRightEndX(int playerPlaneRightEndX) {
+        PLAYER_PLANE_RIGHT_END_X = playerPlaneRightEndX;
+    }
+
+    public static int getPlayerPlaneRightEdgeStartX() {
+        return PLAYER_PLANE_RIGHT_EDGE_START_X;
+    }
+
+    public static void setPlayerPlaneRightEdgeStartX(int playerPlaneRightEdgeStartX) {
+        PLAYER_PLANE_RIGHT_EDGE_START_X = playerPlaneRightEdgeStartX;
+    }
+
+    public static int getPlayerPlaneRightEdgeEndX() {
+        return PLAYER_PLANE_RIGHT_EDGE_END_X;
+    }
+
+    public static void setPlayerPlaneRightEdgeEndX(int playerPlaneRightEdgeEndX) {
+        PLAYER_PLANE_RIGHT_EDGE_END_X = playerPlaneRightEdgeEndX;
+    }
+
+    public static int getPlayerPlaneSpeed() {
+        return PLAYER_PLANE_SPEED;
     }
 }

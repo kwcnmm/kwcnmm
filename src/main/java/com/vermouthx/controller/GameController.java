@@ -16,9 +16,11 @@ public class GameController {
     private JPanel launchPanel;
     private JPanel gamePanel;
 
+    private PlayerController playerController;
+
     public GameController() {
         init();
-        dto = new GameDTO();
+        dto = GameDTO.getDto();
     }
 
     private void init() {
@@ -29,6 +31,8 @@ public class GameController {
 
     public void startGame() {
         gamePanel = new GamePanel(this);
+        playerController = new PlayerController(dto.getPlayerPlane());
+        gamePanel.addKeyListener(playerController);
         FrameUtil.setContentPanel(gameFrame, gamePanel);
         gameFrame.repaint();
     }
