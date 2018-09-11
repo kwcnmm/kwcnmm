@@ -1,21 +1,22 @@
 package com.vermouthx.service;
 
-import com.vermouthx.config.MybatisConfig;
+import com.vermouthx.dao.UserDao;
+import com.vermouthx.util.MybatisUtil;
 import com.vermouthx.entity.User;
 import com.vermouthx.exception.UserException;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-public class UserService extends MybatisConfig {
+public class UserService extends MybatisUtil {
+    private UserDao userDao;
     List<User> users;
 
     /*
      *注册功能
      */
-    public void register(User user) throws UserException {
+    public boolean register(User user) throws UserException {
+        boolean result = false;
         String userName = user.getUserName();
         String userPassword = user.getUserPassword();
 
@@ -27,13 +28,15 @@ public class UserService extends MybatisConfig {
                 userPassword);
 
         if (userNameIsRight && userPasswordIsRight) {
-                userMapper.addUser(user);
+            result = userDao.addUser(user);
         } else if (userNameIsRight == false) {
             throw new UserException("用户名格式错误");
         } else if (userPasswordIsRight == false) {
             throw new UserException("密码格式错误");
         }
+        return result;
     }
+
     /*
      *登录功能
      */
@@ -46,7 +49,7 @@ public class UserService extends MybatisConfig {
                 user.getUserPassword());
 
         if (userNameIsRight && userPasswordIsRight) {
-            userMapper.getUser(user);
+            userDao.getUser(user);
         } else if (userNameIsRight == false) {
             throw new UserException("用户名格式错误");
         } else if (userPasswordIsRight == false) {
@@ -54,10 +57,11 @@ public class UserService extends MybatisConfig {
         }
         return users;
     }
+
     /*
      *更新成绩功能
      */
-    public void updateScore(User user){
-        userMapper.updateUserScore(user);
+    public boolean updateScore(User user) {
+        return userDao.updateUserScore(user);
     }
 }

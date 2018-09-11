@@ -19,7 +19,6 @@ public interface UserMapper {
     @Insert("INSERT INTO user (user_name,user_password) VALUES (#{user.userName},#{user.userPassword})")
     void addUser(User user);
 
-    @ResultMap(value = "userMap")
     @Update("UPDATE user SET score = #{user.score} WHERE user_id = #{user.userId} AND score < #{user.score}")
-    List<User> updateUserScore(User user);
+    void updateUserScore(User user);
 }

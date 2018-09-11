@@ -1,5 +1,6 @@
-package com.vermouthx.config;
+package com.vermouthx.util;
 
+import com.mysql.jdbc.interceptors.SessionAssociationInterceptor;
 import com.vermouthx.entity.User;
 import com.vermouthx.mapper.UserMapper;
 import org.apache.ibatis.io.Resources;
@@ -8,10 +9,10 @@ import org.apache.ibatis.session.*;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class MybatisConfig {
-    private SqlSession session;
-    public UserMapper userMapper;
-    public MybatisConfig() {
+public class MybatisUtil {
+    private static SqlSessionFactory sqlSessionFactory;
+
+    public MybatisUtil() {
         String resource = "mybatis-config.xml";
         InputStream inputStream = null;
         try {
@@ -19,11 +20,11 @@ public class MybatisConfig {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-        session = sqlSessionFactory.openSession();
-        userMapper = session.getMapper(UserMapper.class);
+        sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
     }
-    public void sessionClose(){
-        session.close();
+
+    public static SqlSession createSession() {
+        return sqlSessionFactory.openSession();
     }
+
 }
