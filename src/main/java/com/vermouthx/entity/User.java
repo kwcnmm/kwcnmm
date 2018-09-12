@@ -5,14 +5,10 @@ public class User {
     private String userName;
     private String userPassword;
     private int score;
-    private int rows;
 
-    public int getRows() {
-        return rows;
-    }
-
-    public void setRows(int rows) {
-        this.rows = rows;
+    public User(String userName, String userPassword) {
+        this.userName = userName;
+        this.userPassword = userPassword;
     }
 
     public int getUserId() {
@@ -46,4 +42,6 @@ public class User {
     public void setScore(int score) {
         this.score = score;
     }
+
+    public User() {}
 }
