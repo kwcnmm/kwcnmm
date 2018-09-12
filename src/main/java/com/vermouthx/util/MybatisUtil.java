@@ -1,8 +1,5 @@
 package com.vermouthx.util;
 
-import com.mysql.jdbc.interceptors.SessionAssociationInterceptor;
-import com.vermouthx.entity.User;
-import com.vermouthx.mapper.UserMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.*;
 
@@ -24,7 +21,7 @@ public class MybatisUtil {
     }
 
     public static SqlSession createSession() {
-        return sqlSessionFactory.openSession();
+        return sqlSessionFactory.openSession(true);
     }
 
 }

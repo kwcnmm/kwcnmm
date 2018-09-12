@@ -1,22 +1,20 @@
 package com.vermouthx.service;
 
 import com.vermouthx.dao.UserDao;
-import com.vermouthx.util.MybatisUtil;
 import com.vermouthx.entity.User;
 import com.vermouthx.exception.UserException;
 
 import java.util.List;
 import java.util.regex.Pattern;
 
-public class UserService extends MybatisUtil {
-    private UserDao userDao;
+public class UserService{
+    private UserDao userDao = new UserDao();
     List<User> users;
 
     /*
      *注册功能
      */
     public boolean register(User user) throws UserException {
-        boolean result = false;
         String userName = user.getUserName();
         String userPassword = user.getUserPassword();
 
@@ -26,7 +24,7 @@ public class UserService extends MybatisUtil {
         boolean userNameIsRight = Pattern.matches(userNameRegex, userName);
         boolean userPasswordIsRight = Pattern.matches(userPasswordRegex,
                 userPassword);
-
+        boolean result = false;
         if (userNameIsRight && userPasswordIsRight) {
             result = userDao.addUser(user);
         } else if (userNameIsRight == false) {
@@ -49,7 +47,7 @@ public class UserService extends MybatisUtil {
                 user.getUserPassword());
 
         if (userNameIsRight && userPasswordIsRight) {
-            userDao.getUser(user);
+            users = userDao.getUser(user);
         } else if (userNameIsRight == false) {
             throw new UserException("用户名格式错误");
         } else if (userPasswordIsRight == false) {

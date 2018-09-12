@@ -5,13 +5,13 @@ import com.vermouthx.mapper.UserMapper;
 import com.vermouthx.util.MybatisUtil;
 import org.apache.ibatis.session.SqlSession;
 
-import java.sql.ResultSet;
 import java.util.List;
 
 public class UserDao {
+    MybatisUtil mybatisUtil = new MybatisUtil();
 
     public List<User> getUser(User user) {
-        SqlSession session = MybatisUtil.createSession();
+        SqlSession session = mybatisUtil.createSession();
         UserMapper userMapper = session.getMapper(UserMapper.class);
         List<User> users = userMapper.getUser(user);
         session.close();
@@ -19,30 +19,26 @@ public class UserDao {
     }
 
     public boolean addUser(User user) {
-        boolean result = false;
-        SqlSession session = MybatisUtil.createSession();
+        SqlSession session = mybatisUtil.createSession();
         UserMapper userMapper = session.getMapper(UserMapper.class);
-        try {
-            userMapper.addUser(user);
-            result = true;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        int result = userMapper.addUser(user);
         session.close();
-        return result;
+        if (result == 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean updateUserScore(User user) {
-        boolean result = false;
-        SqlSession session = MybatisUtil.createSession();
+        SqlSession session = mybatisUtil.createSession();
         UserMapper userMapper = session.getMapper(UserMapper.class);
-        try {
-            userMapper.updateUserScore(user);
-            result = true;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        int result = userMapper.updateUserScore(user);
         session.close();
-        return result;
+        if (result == 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

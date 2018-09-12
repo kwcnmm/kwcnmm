@@ -5,6 +5,15 @@ public class User {
     private String userName;
     private String userPassword;
     private int score;
+    private int rows;
+
+    public int getRows() {
+        return rows;
+    }
+
+    public void setRows(int rows) {
+        this.rows = rows;
+    }
 
     public int getUserId() {
         return userId;
